@@ -438,18 +438,12 @@
         }
 
         function launchMovie(tmdbId, title) {
-                    const sourcePrefixUrl = "https://vidsrc.me/embed/movie/"; 
-                    const player = document.getElementById('vidsyncPlayer');
-                    
-                    // This restriction block allows video control while forbidding new tabs or popups
-                    player.removeAttribute("sandbox"); // Reset container
-                    player.setAttribute("sandbox", "allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation");
-                    
-                    player.src = `${sourcePrefixUrl}${tmdbId}?autoPlay=true`;
-                    document.getElementById('currentPlayerTitle').innerText = `Now Playing: ${title}`;
-                    document.getElementById('playerSection').style.display = 'block';
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
+            const sourcePrefixUrl = "https://vidsrc.me/embed/movie/"; 
+            document.getElementById('vidsyncPlayer').src = `${sourcePrefixUrl}${tmdbId}?autoPlay=true`;
+            document.getElementById('currentPlayerTitle').innerText = `Now Playing: ${title}`;
+            document.getElementById('playerSection').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         function closePlayer() {
             document.getElementById('playerSection').style.display = 'none';
